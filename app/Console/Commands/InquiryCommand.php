@@ -72,8 +72,8 @@ class InquiryCommand extends Command
                     
                 }elseif($api_response->status == 'SUCCESS'){
                     if($api_response->data->trx_status == 'SUCCESS'){
-                        DB::table($this->transactions.' as trx')
-                        ->where('trx.uuid', $transaction->uuid)
+                        DB::table($this->transactions)
+                        ->where('uuid', $transaction->uuid)
                         ->update(['status' => empty($response) ? 'PENDING' : $api_response->data->trx_status, 'response' => json_encode($api_response), 'updated_at' => Carbon::now()]);
                     }
 
