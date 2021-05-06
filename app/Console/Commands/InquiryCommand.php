@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Ixudra\Curl\Facades\Curl;
 use Carbon\Carbon;
 use Helper;
 use DB;
