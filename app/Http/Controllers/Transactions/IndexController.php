@@ -176,7 +176,7 @@ class IndexController extends Controller
                 if($api_response->data->trx_status == 'SUCCESS'){
                     DB::table($this->transactions.' as trx')
                     ->where('trx.uuid', $uuid)
-                    ->update(['status' => empty($response) ? 'PENDING' : $api_response->data->trx_status, 'response' => json_encode($api_response), 'updated_at' => Carbon::now()]);
+                    ->update(['status' => empty($api_response) ? 'PENDING' : $api_response->data->trx_status, 'response' => json_encode($api_response), 'updated_at' => Carbon::now()]);
                 }
                 $response = array('error' => false, 'message' => $api_response->message);
             }
