@@ -64,7 +64,7 @@ class InquiryCommand extends Command
                 Helper::logActivity("Read", "inquiry", json_encode($api_response), "Success", $transaction->reference_no);
 
                 if(empty($api_response) || empty($api_response->status)){
-                    Helper::logActivity("Create", "inquiry", 'Something wrong from API'), "Error", $transaction->reference_no);
+                    Helper::logActivity("Create", "inquiry", 'Something wrong from API', "Error", $transaction->reference_no);
 
                 }elseif($api_response->status == 'ERROR') { 
                     Helper::logActivity("Create", "inquiry", $api_response->message, "Error", $transaction->reference_no);
@@ -79,7 +79,7 @@ class InquiryCommand extends Command
                     Helper::logActivity("Create", "inquiry", json_encode($api_response), "Success", $transaction->reference_no);
                     
                 }
-            
+
             }
             
 
