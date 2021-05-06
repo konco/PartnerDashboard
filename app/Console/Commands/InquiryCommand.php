@@ -44,7 +44,9 @@ class InquiryCommand extends Command
      */
     public function handle()
     {
-        $transactions = DB::table($this->transactions.' as trx')->select('trx.uuid', 'trx.partner_trx_no', 'trx.reference_no')->where('trx.status', 'PENDING')->get();
+        $yesterday = Carbon::yesterday();
+        
+        $transactions = DB::table($this->transactions.' as trx')->select('trx.uuid', 'trx.partner_trx_no', 'trx.reference_no')->where('trx.status', 'PENDING')->where('created_at', '<=', $yesterday)->get();
 
         if(!empty($transactions)){
             foreach ($transactions as $key => $transaction) {
