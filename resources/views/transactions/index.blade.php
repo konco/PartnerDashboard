@@ -233,17 +233,17 @@ function getActionBtn(uuid, trx_no) {
 
 function inquiry(uuid, partner_trx_no)
 {
-  btn_edit = '';
-  if(partner_trx_no != '' || partner_trx_no != null){
+  if( !partner_trx_no){
+    btn_edit = '';
+  }else{
     let uuidString = "'"+uuid+"'";
 
     btn_edit = '<button type="button" class="btn btn-success btn-icon-text" id="inquiry-btn-'+uuid+'" onClick="sendInquiry('+uuidString+')">'+
         '<i class="mdi mdi-telegram btn-icon-append"></i>'+
-        ' Inquiry '+
-      '</button>';  
+        ' Cek Status '+
+      '</button>';
   }
   
-
   return btn_edit;
 }
 
