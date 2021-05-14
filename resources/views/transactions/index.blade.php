@@ -194,7 +194,7 @@ $(function() {
         { 
           data: null,
           render: function (data) {
-              return inquiry(data.uuid)
+              return inquiry(data.uuid, data.partner_trx_no)
           },
           orderable: false
         }
@@ -231,14 +231,18 @@ function getActionBtn(uuid, trx_no) {
   return btn_edit;
 }
 
-function inquiry(uuid)
+function inquiry(uuid, partner_trx_no)
 {
-  let uuidString = "'"+uuid+"'";
+  btn_edit = '';
+  if(partner_trx_no != '' || partner_trx_no != null){
+    let uuidString = "'"+uuid+"'";
 
-  btn_edit = '<button type="button" class="btn btn-success btn-icon-text" id="inquiry-btn-'+uuid+'" onClick="sendInquiry('+uuidString+')">'+
+    btn_edit = '<button type="button" class="btn btn-success btn-icon-text" id="inquiry-btn-'+uuid+'" onClick="sendInquiry('+uuidString+')">'+
         '<i class="mdi mdi-telegram btn-icon-append"></i>'+
         ' Inquiry '+
-      '</button>';
+      '</button>';  
+  }
+  
 
   return btn_edit;
 }
