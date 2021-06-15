@@ -34,9 +34,11 @@ class IndexController extends Controller
                     ->post();
 
         if(empty($response) || empty($response->status)){ 
-        	Session::flash('error', "Something wrong from API");
+        	//Session::flash('error', "Something wrong from API");
+            $balance = 0;
         }elseif($response->status == 'ERROR') { 
-        	Session::flash('error', $response->message); 
+        	//Session::flash('error', $response->message); 
+            $balance = 0;
         }elseif($response->status == 'SUCCESS'){
 			$balance = $response->balance;
 		}
